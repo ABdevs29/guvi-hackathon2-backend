@@ -77,6 +77,7 @@ app.get("/admins", async (request, response) => {
     .find({})
     .toArray();
   response.send(admins);
+  console.log(admins);
 });
 
 //Admin Login
@@ -94,9 +95,9 @@ app.post("/admins/login", async (request, response) => {
 
     if (isPasswordMatch) {
         const token = jwt.sign({id: result._id}, process.env.SECRET_KEY);
-        response.send([{message: "Successful Login", token: token}]);
+        response.send({message: "Successful Login", token: token});
     } else {
-        response.send([{message: "Invalid login credentials"}]);
+        response.send({message: "Invalid login credentials"});
     }
   });
 
