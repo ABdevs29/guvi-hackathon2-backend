@@ -81,7 +81,7 @@ app.get("/admins", async (request, response) => {
 });
 
 //Admin Login
-app.post("/admins/login", async (request, response) => {
+app.post("/login", async (request, response) => {
     const client = await createConnection();
     const { username, password } = request.body;
   
