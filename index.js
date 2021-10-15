@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import cors from "cors";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import { auth } from "./middleware/auth.js";
 
 const app = express();
 dotenv.config();
@@ -42,7 +43,7 @@ app.get("/products", async (request, response) => {
 });
 
 //Add new products
-app.post("/products", async (request, response) => {
+app.post("/products", auth, async (request, response) => {
   const client = await createConnection();
   const newProduct = request.body;
 
