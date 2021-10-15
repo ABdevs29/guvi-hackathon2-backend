@@ -50,7 +50,7 @@ app.post("/products", auth, async (request, response) => {
   const result = await client
     .db("equipment-rental")
     .collection("products")
-    .insertMany(newProduct);
+    .insertOne(newProduct);
   response.send(result);
 });
 
